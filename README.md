@@ -1,4 +1,4 @@
-# Entropie_python By YEBGA MIYOGOG Brayan
+# Entropie_python By YEBGA MIYOGOG Brayan (YMB)
 
 Générateur de nombres aléatoires grâce à l'entropie
 

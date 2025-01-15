@@ -43,10 +43,11 @@ Vous pouvez exécuter le script en ligne de commande avec divers arguments :
 
     python votre_script.py -url http://example.com/image.jpg -path image.jpg -len 10 -export resultat.txt -db -host localhost -user root -password votre_mot_de_passe -database votre_db
 
+
                     Points à Vérifier
 
-- Assurez-vous que toutes les bibliothèques nécessaires sont installées (opencv-python, Pillow, requests, mysql-connector-python).
+        - Assurez-vous que toutes les bibliothèques nécessaires sont installées (opencv-python, Pillow, requests, mysql-connector-python).
 
-- Vérifiez que votre caméra est accessible si vous utilisez la fonction de capture d'image.
+        - Vérifiez que votre caméra est accessible si vous utilisez la fonction de capture d'image.
 
-- Assurez-vous que les informations de connexion à la base de données MySQL sont correctes.
+        - Assurez-vous que les informations de connexion à la base de données MySQL sont correctes.

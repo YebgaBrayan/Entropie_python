@@ -52,6 +52,23 @@ def hash_pixels(pixels):
         pixel_bytes.extend(pixel if isinstance(pixel, (list, tuple)) else [pixel])
     m.update(pixel_bytes)
     return m.digest()
+def generateur_aleatoire_image(filepath, longueur, output_format):
+    if not isinstance(longueur, int) or longueur <= 0:
+        return "Erreur : La longueur doit être un entier positif."
+
+    pixels = collecte_pixel_image(filepath)
+    if pixels is None:
+        return "Erreur : Impossible de lire le fichier."
+
+    hash_result = hash_pixels(pixels)
+    random_sequence = int.from_bytes(hash_result, byteorder='big')
+    
+    if output_format == "hex":
+        return hex(random_sequence)[:longueur]
+    elif output_format == "bin":
+        return bin(random_sequence)[:longueur]
+    else:
+        return str(random_sequence)[:longueur]
 
 if __name__ == "__main__":
     main()

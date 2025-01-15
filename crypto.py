@@ -36,7 +36,22 @@ def telecharger_image(url, filepath, timeout):
     except requests.RequestException as e:
         print(f"Erreur lors du téléchargement de l'image : {e}")
         return None
+def collecte_pixel_image(filepath):
+    try:
+        with Image.open(filepath) as img:
+            pixels = list(img.getdata())
+        return pixels
+    except (FileNotFoundError, IOError) as e:
+        print(f"Erreur lors de la collecte des pixels : {e}")
+        return None
 
+def hash_pixels(pixels):
+    m = hashlib.sha512()
+    pixel_bytes = bytearray()
+    for pixel in pixels:
+        pixel_bytes.extend(pixel if isinstance(pixel, (list, tuple)) else [pixel])
+    m.update(pixel_bytes)
+    return m.digest()
 
 if __name__ == "__main__":
     main()

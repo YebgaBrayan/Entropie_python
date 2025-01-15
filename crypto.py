@@ -8,6 +8,23 @@ from mysql.connector import errorcode
 from PIL import Image, ImageFilter
 import sys
 
+def capturer_image_camera(filepath):
+    cap = cv2.VideoCapture(0)  
+    if not cap.isOpened():
+        print("Erreur : Impossible d'accéder à la caméra.")
+        return False
+
+    ret, frame = cap.read()  
+    if ret:
+        cv2.imwrite(filepath, frame)  
+        print(f"Image capturée et sauvegardée sous : {filepath}")
+        cap.release() 
+        return True
+    else:
+        print("Erreur : Impossible de capturer l'image.")
+        cap.release()  
+        return False
+    
 def telecharger_image(url, filepath, timeout):
     try:
         response = requests.get(url, timeout=timeout)
@@ -19,3 +36,7 @@ def telecharger_image(url, filepath, timeout):
     except requests.RequestException as e:
         print(f"Erreur lors du téléchargement de l'image : {e}")
         return None
+
+
+if __name__ == "__main__":
+    main()
